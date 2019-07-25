@@ -1,3 +1,4 @@
+dist: xenial
 language: java
 jdk:
   - oraclejdk7
@@ -5,14 +6,14 @@ jdk:
   - openjdk6
 script: mvn compile test
 install: true
-notifications:
-  irc: 
-    channels: 
-      - "irc.esper.net#lain"
-    on_success: change
-    on_failure: always
-  email:
-    recipients:
-      - "khobbits@ess3.net"
-    on_success: change
-    on_failure: always
+#notifications:
+#  irc: 
+#    channels: 
+#      - "irc.esper.net#lain"
+#    on_success: change
+#    on_failure: always
+#  email:
+#    recipients:
+#      - "khobbits@ess3.net"
+#    on_success: change
+#    on_failure: always
