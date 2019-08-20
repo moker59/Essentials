@@ -11,3 +11,13 @@ cache:
 before_install:
   - chmod +x scripts/buildtools.sh
   - scripts/buildtools.sh
+script: mvn install
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $GH_TOKEN
+  file_glob: true
+  file:
+    - "*/target/*.jar"
+  on:
+    tags: true
