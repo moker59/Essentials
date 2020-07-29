@@ -1,0 +1,24 @@
+jdk:
+  - openjdk8
+  - openjdk11
+
+cache:
+  directories:
+  - .buildtools
+  - $HOME/.m2
+
+before_install:
+  - wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+  - java -jar BuildTools.jar
+
+script: mvn clean install
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $GH_TOKEN
+  file_glob: true
+  file:
+    - "*/target/*.jar"
+  on:
+    tags: true
+    all_branches: true
